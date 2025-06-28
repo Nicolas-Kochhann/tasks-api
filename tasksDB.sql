@@ -1,0 +1,49 @@
+CREATE DATABASE IF NOT EXISTS tasksDB;
+
+USE tasksDB;
+
+CREATE TABLE tasks (
+    id AUTO_INCREMENT PRIMARY KEY;
+    title VARCHAR(255) NOT NULL;
+    completed BOOLEAN NOT NULL DEFAULT FALSE;
+    date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+)
+
+DELIMITER //
+
+CREATE PROCEDURE createTask(
+    IN taskTitle VARCHAR(255),
+    IN taskCompleted BOOLEAN
+)
+BEGIN
+    INSERT INTO tasks (title, completed)
+    VALUES (taskTitle, taskCompleted);
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE selectAllTasks
+BEGIN
+    SELECT * FROM tasks;
+END //
+
+DELIMITER ;
+
+
+DELIMITER // 
+
+CREATE PROCEDURE selectTask(
+    IN taskId INT
+)
+BEGIN
+        SELECT * FROM tasks WHERE id = taskId;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE 
