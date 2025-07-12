@@ -1,13 +1,13 @@
 <?php
 $servername = "localhost";
-$username = "";
+$username = "root";
 $password = "";
 $database = "tasksDB";
 
 $conn = new mysqli($servername, $username, $password, $database);
 
-if ($conn->connection_error){
-    die("Connection failed: ". $conn->connection_error);
+if ($conn->connect_error){
+    die("Connection failed: ". $conn->connect_error);
 }
 
 echo "Connected sucessfully";

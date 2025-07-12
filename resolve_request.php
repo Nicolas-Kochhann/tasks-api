@@ -7,4 +7,4 @@ function resolve_request_into_json(){
     return $data;
 }
 
-/>
+?>
