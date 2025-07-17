@@ -1,4 +1,4 @@
-This small api is just a tag CRUD.
+This small api is just a "task CRUD".
 
 Endpoints:
 GET: http://localhost/Projects/tasks-api/ and http://localhost/Projects/tasks-api/?{id};
