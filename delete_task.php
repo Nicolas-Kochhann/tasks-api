@@ -5,10 +5,10 @@ header('Content-Type: application/json');
 
 $data = resolve_request_into_json();
 
-if(isset($data->id)){
+if(isset($_GET['id'])){
     require_once "config.php";
 
-    $sql = "DELETE FROM tasks WHERE id = ". $data->id;
+    $sql = "DELETE FROM tasks WHERE id = ". intval($_GET['id']);
     if($conn->query($sql) === TRUE){
         http_response_code(201);
         echo json_encode(["message" => "Tarefa removida com sucesso"]);

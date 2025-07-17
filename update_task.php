@@ -5,10 +5,10 @@ header('Content-Type: application/json');
 
 $data = resolve_request_into_json();
 
-if (isset($data->id) AND isset($data->title)){
+if (isset($_GET['id']) and isset($data->title)){
     require_once "config.php";
 
-    $sql = "UPDATE tasks SET title = '". $data->title ."' WHERE id = ". $data->id;
+    $sql = "UPDATE tasks SET title = '". $data->title ."' WHERE id = ". intval($_GET['id']);
     if($conn->query($sql) === TRUE){
         http_response_code(201);
         echo json_encode(["message" => "Tarefa atualizada com sucesso"]);
@@ -18,10 +18,10 @@ if (isset($data->id) AND isset($data->title)){
     }
 
 } 
-else if (isset($data->id) and isset($data->completed) and ((intval($data->completed) === 1 or intval($data->completed) === 0))){
+else if (isset($_GET['id']) and isset($data->completed) and ((intval($data->completed) === 1 or intval($data->completed) === 0))){
     require_once "config.php";
    
-    $sql = "UPDATE tasks SET completed = ". $data->completed ." WHERE id = ". intval($data->id);
+    $sql = "UPDATE tasks SET completed = ". $data->completed ." WHERE id = ". intval($_GET['id']);
     if($conn->query($sql) === TRUE){
         http_response_code(201);
         echo json_encode(["message" => "Tarefa atualizada com sucesso"]);
